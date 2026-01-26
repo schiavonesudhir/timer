@@ -3,18 +3,24 @@
 #include "Timer.h"
 #include "Display.h"
 #include "FileLogger.h"
+#include "CountDownTimer.h"
+#include <iostream>
 using namespace std;
 int main() {
-    Timer myTimer;
-    Display myDisplay(&myTimer); // Il display osserva il timer
-    FileLogger myLogger(&myTimer, "timer_log.txt"); // Salverà tutto su file
+    // Possiamo scegliere quale timer usare usando il polimorfismo
+    Timer* mioTimer = new CountdownTimer(0, 0, 10); // Parte da 10 secondi
 
-    myTimer.start();
+    Display display(mioTimer);
 
-    for(int i = 0; i < 10; i++) {
-        myTimer.update();
-        this_thread::sleep_for(std::chrono::seconds(1));
+    cout << "Avvio Countdown..." << std::endl;
+    mioTimer->start();
+
+    for(int i = 0; i < 11; i++) {
+        mioTimer->update();
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
+    cout << "\nFine!" << std::endl;
+    delete mioTimer;
     return 0;
 }

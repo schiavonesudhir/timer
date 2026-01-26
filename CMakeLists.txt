@@ -22,6 +22,7 @@ add_executable(timer
         src/Timer.cpp
         src/Display.cpp
         src/FileLogger.cpp
+        src/CountDownTimer.cpp
 )
 
 # Se vuoi che funzionino anche i test, aggiungili anche qui
@@ -33,5 +34,7 @@ add_executable(Google_Tests_run
         src/Display.cpp
         include/FileLogger.h
         src/FileLogger.cpp
+        include/CountDownTimer.h
+        src/CountDownTimer.cpp
 )
 target_link_libraries(Google_Tests_run gtest_main)

@@ -10,6 +10,7 @@
 #include "Date.h"
 #include "Observer.h"
 
+
 class Timer {
 protected:
     MyTime currentTime;
@@ -19,15 +20,16 @@ protected:
 
 public:
     Timer();
-    void start() { running = true; }
-    void stop() { running = false; }
+    virtual ~Timer(){};
 
     // Metodi per gestire gli osservatori
+    void start() { running = true; }
+    void stop() { running = false; }
     void attach(Observer* o);
     void detach(Observer* o);
     void notify();
 
-    void update(); // Incrementa il tempo e notifica
+    virtual void update(); // Incrementa il tempo e notifica
 
     // Getter per permettere agli osservatori di leggere i dati
     MyTime getTime() const { return currentTime; }
