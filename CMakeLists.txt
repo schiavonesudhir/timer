@@ -4,24 +4,32 @@ project(timer)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 1. Cartella degli Header
 include_directories(include)
 
-# 2. SCARICAMENTO AUTOMATICO GOOGLE TEST (Sostituisce la cartella lib)
+# GOOGLE TEST (Lascia quello che avevamo con FetchContent)
 include(FetchContent)
 FetchContent_Declare(
         googletest
         URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
 )
-# Per evitare problemi su Windows
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# 3. ESEGUIBILE PRINCIPALE
-# Assicurati che src/main.cpp esista!
-add_executable(timer src/main.cpp)
+# --- QUI È DOVE DEVI AGGIUNGERE Time.cpp ---
+# Eseguibile principale
+add_executable(timer
+        src/main.cpp
+        src/MyTime.cpp   # <-- Fondamentale!
+)
 
-# 4. ESEGUIBILE PER I TEST
-# Se non hai ancora test1.cpp, crealo vuoto nella cartella tests
-add_executable(Google_Tests_run tests/test1.cpp)
+# Eseguibile per i Test
+add_executable(Google_Tests_run
+        tests/test1.cpp
+        src/MyTime.cpp
+        include/Date.h
+        src/Date.cpp
+        include/Timer.h
+        src/Timer.cpp
+        # <-- Fondamentale anche qui!
+)
 target_link_libraries(Google_Tests_run gtest_main)
