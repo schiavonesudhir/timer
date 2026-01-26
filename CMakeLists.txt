@@ -18,15 +18,17 @@ FetchContent_MakeAvailable(googletest)
 add_executable(timer
         src/main.cpp
         src/MyTime.cpp
+        src/Date.cpp
+        src/Timer.cpp    # <--- ASSICURATI CHE CI SIA QUESTO
+        src/Display.cpp  # <--- E ANCHE QUESTO
 )
 
-# Eseguibile per i Test
+# Se vuoi che funzionino anche i test, aggiungili anche qui
 add_executable(Google_Tests_run
         tests/test1.cpp
         src/MyTime.cpp
-        include/Date.h
         src/Date.cpp
-        include/Timer.h
         src/Timer.cpp
+        src/Display.cpp
 )
 target_link_libraries(Google_Tests_run gtest_main)
