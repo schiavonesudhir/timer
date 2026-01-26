@@ -20,8 +20,8 @@ int main() {
 
     try {
         std::cout << "=== GESTIONE TEMPO ===\n";
-        std::cout << "1. Avvia Timer (Conteggio avanti)\n";
-        std::cout << "2. Avvia Countdown (Conteggio indietro)\n";
+        std::cout << "1. Avvia Cronometro (Conteggio avanti)\n";
+        std::cout << "2. Avvia Timer (Conteggio indietro)\n";
         std::cout << "Scelta: ";
         std::cin >> scelta;
 
@@ -38,7 +38,7 @@ int main() {
         mioTimer->start();
 
         std::cout << "Premere Ctrl+C per interrompere.\n";
-        std::cout << (scelta == 2 ? "MODALITA': COUNTDOWN" : "MODALITA': TIMER") << "\n";
+        std::cout << (scelta == 2 ? "MODALITA': TIMER" : "MODALITA': CRONOMETRO") << "\n";
         while (true) {
             clearScreen();
             mioTimer->update(); // Questo chiama anche notify() e quindi il display stampa
