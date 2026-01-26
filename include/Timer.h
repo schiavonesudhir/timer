@@ -11,7 +11,7 @@
 #include "Observer.h"
 
 class Timer {
-private:
+protected:
     MyTime currentTime;
     Date currentDate;
     bool running;

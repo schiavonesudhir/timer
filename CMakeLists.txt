@@ -19,8 +19,9 @@ add_executable(timer
         src/main.cpp
         src/MyTime.cpp
         src/Date.cpp
-        src/Timer.cpp    # <--- ASSICURATI CHE CI SIA QUESTO
-        src/Display.cpp  # <--- E ANCHE QUESTO
+        src/Timer.cpp
+        src/Display.cpp
+        src/FileLogger.cpp
 )
 
 # Se vuoi che funzionino anche i test, aggiungili anche qui
@@ -30,5 +31,7 @@ add_executable(Google_Tests_run
         src/Date.cpp
         src/Timer.cpp
         src/Display.cpp
+        include/FileLogger.h
+        src/FileLogger.cpp
 )
 target_link_libraries(Google_Tests_run gtest_main)
