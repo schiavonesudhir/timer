@@ -6,7 +6,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(include)
 
-# GOOGLE TEST (Lascia quello che avevamo con FetchContent)
 include(FetchContent)
 FetchContent_Declare(
         googletest
@@ -15,11 +14,10 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# --- QUI È DOVE DEVI AGGIUNGERE Time.cpp ---
 # Eseguibile principale
 add_executable(timer
         src/main.cpp
-        src/MyTime.cpp   # <-- Fondamentale!
+        src/MyTime.cpp
 )
 
 # Eseguibile per i Test
@@ -30,6 +28,5 @@ add_executable(Google_Tests_run
         src/Date.cpp
         include/Timer.h
         src/Timer.cpp
-        # <-- Fondamentale anche qui!
 )
 target_link_libraries(Google_Tests_run gtest_main)

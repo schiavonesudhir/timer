@@ -9,7 +9,7 @@
 
 class Timer {
 private:
-    Time currentTime;
+    MyTime currentTime;
     Date currentDate;
     bool running;
 
@@ -22,4 +22,3 @@ public:
 };
 
 #endif
-#endif //TIMER_TIMER_H
