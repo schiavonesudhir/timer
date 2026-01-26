@@ -9,6 +9,7 @@
 #include "MyTime.h"
 #include "Date.h"
 #include "Observer.h"
+#include <vector>
 
 
 class Timer {
@@ -17,6 +18,7 @@ protected:
     Date currentDate;
     bool running;
     std::list<Observer*> observers; // Lista degli osservatori
+    std::vector<MyTime> laps;
 
 public:
     Timer();
@@ -34,6 +36,10 @@ public:
     // Getter per permettere agli osservatori di leggere i dati
     MyTime getTime() const { return currentTime; }
     Date getDate() const { return currentDate; }
+
+    void addLap() { laps.push_back(currentTime); }
+    void clearLaps() { laps.clear(); }
+    const std::vector<MyTime>& getLaps() const { return laps; }
 };
 
 #endif

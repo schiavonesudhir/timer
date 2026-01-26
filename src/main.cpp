@@ -1,26 +1,56 @@
+#include <iostream>
 #include <thread>
 #include <chrono>
 #include "Timer.h"
+#include "CountdownTimer.h"
 #include "Display.h"
-#include "FileLogger.h"
-#include "CountDownTimer.h"
-#include <iostream>
-using namespace std;
+#include "TimerException.h"
+
+void clearScreen() {
+#ifdef _WIN32
+    std::system("cls");
+#else
+    std::system("clear");
+#endif
+}
+
 int main() {
-    // Possiamo scegliere quale timer usare usando il polimorfismo
-    Timer* mioTimer = new CountdownTimer(0, 0, 10); // Parte da 10 secondi
+    Timer* mioTimer = nullptr;
+    int scelta;
 
-    Display display(mioTimer);
+    try {
+        std::cout << "=== GESTIONE TEMPO ===\n";
+        std::cout << "1. Avvia Timer (Conteggio avanti)\n";
+        std::cout << "2. Avvia Countdown (Conteggio indietro)\n";
+        std::cout << "Scelta: ";
+        std::cin >> scelta;
 
-    cout << "Avvio Countdown..." << std::endl;
-    mioTimer->start();
+        if (scelta == 2) {
+            int h, m, s;
+            std::cout << "Inserisci tempo di partenza (h m s): ";
+            std::cin >> h >> m >> s;
+            mioTimer = new CountdownTimer(h, m, s);
+        } else {
+            mioTimer = new Timer();
+        }
 
-    for(int i = 0; i < 11; i++) {
-        mioTimer->update();
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        Display display(mioTimer);
+        mioTimer->start();
+
+        std::cout << "Premere Ctrl+C per interrompere.\n";
+        std::cout << (scelta == 2 ? "MODALITA': COUNTDOWN" : "MODALITA': TIMER") << "\n";
+        while (true) {
+            clearScreen();
+            mioTimer->update(); // Questo chiama anche notify() e quindi il display stampa
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
+
+    } catch (const TimerException& e) {
+        std::cerr << "\nERRORE: " << e.what() << std::endl;
+    } catch (...) {
+        std::cerr << "\nErrore imprevisto!" << std::endl;
     }
 
-    cout << "\nFine!" << std::endl;
     delete mioTimer;
     return 0;
 }

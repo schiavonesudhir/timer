@@ -36,5 +36,7 @@ add_executable(Google_Tests_run
         src/FileLogger.cpp
         include/CountDownTimer.h
         src/CountDownTimer.cpp
+        include/TimerException.h
+        tests/test_countdown.cpp
 )
 target_link_libraries(Google_Tests_run gtest_main)

@@ -1,16 +1,19 @@
 //
 // Created by sudhs on 26/01/2026.
 //
-
+#include "TimerException.h"
 #include "MyTime.h"
 MyTime::MyTime(int h, int m, int s) {
     setTime(h, m, s);
 }
 
 void MyTime::setTime(int h, int m, int s) {
-    hours = (h >= 0 && h < 24) ? h : 0;
-    minutes = (m >= 0 && m < 60) ? m : 0;
-    seconds = (s >= 0 && s < 60) ? s : 0;
+    if (h < 0 || h > 23 || m < 0 || m > 59 || s < 0 || s > 59) {
+        throw TimerException("Errore: Formato orario non valido (0-23h, 0-59m, 0-59s).");
+    }
+    hours = h;
+    minutes = m;
+    seconds = s;
 }
 
 void MyTime::tick() {
