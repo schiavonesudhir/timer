@@ -29,9 +29,9 @@ bool MyTime::tickDown() {
     return true;
 }
 
-std::string MyTime::toString() const {
+string MyTime::toString() const {
     char buffer[10];
     // %02d significa: stampa un intero con almeno 2 cifre, riempiendo con 0
     sprintf(buffer, "%02d:%02d:%02d", hours, minutes, seconds);
-    return std::string(buffer);
+    return string(buffer);
 }

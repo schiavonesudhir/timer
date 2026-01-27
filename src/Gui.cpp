@@ -7,9 +7,9 @@
 Gui::Gui() {
     initscr();            // Avvia ncurses
     cbreak();             // Disabilita buffering riga
-    noecho();             // Non mostrare i tasti premuti
-    curs_set(0);          // Nascondi cursore
-    nodelay(stdscr, TRUE);// Input NON bloccante (fondamentale per il timer!)
+    noecho();             // Non mostra i tasti premuti
+    curs_set(0);          // Nasconde cursore
+    nodelay(stdscr, TRUE);// Input NON bloccante
 
     // Abilita colori se supportati
     if (has_colors()) {
@@ -32,7 +32,7 @@ Gui::~Gui() {
 }
 
 void Gui::draw(const CountDownTimer& timer) {
-    werase(win); // Pulisci finestra
+    werase(win); // Pulisce finestra
 
     // Disegna bordo
     wattron(win, COLOR_PAIR(1));
@@ -41,14 +41,14 @@ void Gui::draw(const CountDownTimer& timer) {
     wattroff(win, COLOR_PAIR(1));
 
     // Scrivi Tempo (Grande e Rosso)
-    std::string timeStr = timer.getTime().toString();
+    string timeStr = timer.getTime().toString();
     wattron(win, A_BOLD | COLOR_PAIR(2));
     mvwprintw(win, height/2 - 1, (width - timeStr.length())/2, "%s", timeStr.c_str());
     wattroff(win, A_BOLD | COLOR_PAIR(2));
 
     // Scrivi istruzioni
     wattron(win, COLOR_PAIR(3));
-    std::string info = "Premi 'Q' per uscire";
+    string info = "Premi 'Q' per uscire";
     mvwprintw(win, height - 2, (width - info.length())/2, "%s", info.c_str());
     wattroff(win, COLOR_PAIR(3));
 
@@ -67,10 +67,10 @@ void Gui::showEndScreen() {
     wattron(win, A_BLINK | A_BOLD | COLOR_PAIR(2));
     mvwprintw(win, height/2, 10, "TEMPO SCADUTO!");
     wattroff(win, A_BLINK | A_BOLD | COLOR_PAIR(2));
-    mvwprintw(win, height-2, 8, "Premi Q per uscire");
+    mvwprintw(win, height-2, 8, "Premi S per uscire");
     wrefresh(win);
 
     // Aspetta input bloccante alla fine
     nodelay(stdscr, FALSE);
-    while(getch() != 'q');
+    while(getch() != 's');
 }
