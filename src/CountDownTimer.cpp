@@ -3,32 +3,19 @@
 //
 #include "CountDownTimer.h"
 
-CountdownTimer::CountdownTimer(int h, int m, int s) {
-    currentTime.setTime(h, m, s);
-    running = false;
+CountdownTimer::CountdownTimer(int h, int m, int s): currentTime(h, m, s), finished(false) {
+    if (currentTime.isZero()) {
+        finished = true;
+    }
 }
 
-void CountdownTimer::update() {
-    if (!running) return;
+void Countdown::update() {
+    if (!finished) {
+        // Prova a scalare un secondo
+        bool stillRunning = currentTime.tickDown();
 
-    int h = currentTime.getHours();
-    int m = currentTime.getMinutes();
-    int s = currentTime.getSeconds();
-
-    if (h == 0 && m == 0 && s == 0) {
-        running = false; // Il countdown è finito
-    } else {
-        s--;
-        if (s < 0) {
-            s = 59;
-            m--;
-            if (m < 0) {
-                m = 59;
-                h--;
-            }
+        if (!stillRunning) {
+            finished = true;
         }
-        currentTime.setTime(h, m, s);
     }
-
-    notify(); // Avvisa gli osservatori del nuovo tempo
 }

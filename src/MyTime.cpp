@@ -1,33 +1,37 @@
 //
 // Created by sudhs on 26/01/2026.
 //
-#include "TimerException.h"
 #include "MyTime.h"
-MyTime::MyTime(int h, int m, int s) {
-    setTime(h, m, s);
+#include <cstdio>
+MyTime::MyTime(int h, int m, int s) : hours(h), minutes(m), seconds(s) {}
+
+bool Time::isZero() const {
+    return hours == 0 && minutes == 0 && seconds == 0;
 }
 
-void MyTime::setTime(int h, int m, int s) {
-    if (h < 0 || h > 23 || m < 0 || m > 59 || s < 0 || s > 59) {
-        throw TimerException("Errore: Formato orario non valido (0-23h, 0-59m, 0-59s).");
-    }
-    hours = h;
-    minutes = m;
-    seconds = s;
-}
+bool MyTime::tickDown() {
+    if (isZero()) return false; // Non può scendere sotto zero
 
-void MyTime::tick() {
-    seconds++;
-    if (seconds >= 60) {
-        seconds = 0;
-        minutes++;
-        if (minutes >= 60) {
-            minutes = 0;
-            hours = (hours + 1) % 24;
+    if (seconds > 0) {
+        seconds--;
+    } else {
+        if (minutes > 0) {
+            minutes--;
+            seconds = 59;
+        } else {
+            if (hours > 0) {
+                hours--;
+                minutes = 59;
+                seconds = 59;
+            }
         }
     }
+    return true;
 }
 
-void MyTime::reset() {
-    hours = minutes = seconds = 0;
+std::string MyTime::toString() const {
+    char buffer[10];
+    // %02d significa: stampa un intero con almeno 2 cifre, riempiendo con 0
+    sprintf(buffer, "%02d:%02d:%02d", hours, minutes, seconds);
+    return std::string(buffer);
 }

@@ -4,7 +4,7 @@
 
 #ifndef MYTIME_H
 #define MYTIME_H
-
+#include <string>
 class MyTime { // Cambiato nome da Time a MyTime
 private:
     int hours;
@@ -12,13 +12,21 @@ private:
     int seconds;
 
 public:
-    MyTime(int h = 0, int m = 0, int s = 0);
-    void tick();
-    void reset();
+    Time(int h = 0, int m = 0, int s = 0);
+
+    // Getters
     int getHours() const { return hours; }
     int getMinutes() const { return minutes; }
     int getSeconds() const { return seconds; }
-    void setTime(int h, int m, int s);
+
+    // Ritorna vero se il tempo è 00:00:00
+    bool isZero() const;
+
+    // Toglie un secondo. Ritorna false se siamo già a 0.
+    bool tickDown();
+
+    // Per stampare facilmente (es. "01:05:09")
+    std::string toString() const;
 };
 
 #endif

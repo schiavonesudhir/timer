@@ -1,56 +1,55 @@
 #include <iostream>
-#include <thread>
-#include <chrono>
-#include "Timer.h"
-#include "CountdownTimer.h"
-#include "Display.h"
-#include "TimerException.h"
-
+#include <thread> // Per sleep_for
+#include <chrono> // Per seconds
+#include <cstdlib> // Per system()
+#include "Countdown.h"
+using namespace std;
+// Funzione helper per pulire lo schermo su Linux/WSL
 void clearScreen() {
-#ifdef _WIN32
-    std::system("cls");
-#else
-    std::system("clear");
-#endif
+    system("clear");
 }
 
 int main() {
-    Timer* mioTimer = nullptr;
-    int scelta;
+    int h, m, s;
 
-    try {
-        std::cout << "=== GESTIONE TEMPO ===\n";
-        std::cout << "1. Avvia Cronometro (Conteggio avanti)\n";
-        std::cout << "2. Avvia Timer (Conteggio indietro)\n";
-        std::cout << "Scelta: ";
-        std::cin >> scelta;
+    // Input iniziale
+    clearScreen();
+    cout << "=== COUNTDOWN TIMER (WSL) ===\n";
+    cout << "Inserisci ore: "; cin >> h;
+    cout << "Inserisci minuti: "; cin >> m;
+    cout << "Inserisci secondi: "; cin >> s;
 
-        if (scelta == 2) {
-            int h, m, s;
-            std::cout << "Inserisci tempo di partenza (h m s): ";
-            std::cin >> h >> m >> s;
-            mioTimer = new CountdownTimer(h, m, s);
-        } else {
-            mioTimer = new Timer();
-        }
+    // Creazione oggetto
+    Countdown myCountdown(h, m, s);
 
-        Display display(mioTimer);
-        mioTimer->start();
+    // Loop principale
+    while (!myCountdown.isFinished()) {
+        clearScreen();
 
-        std::cout << "Premere Ctrl+C per interrompere.\n";
-        std::cout << (scelta == 2 ? "MODALITA': TIMER" : "MODALITA': CRONOMETRO") << "\n";
-        while (true) {
-            clearScreen();
-            mioTimer->update(); // Questo chiama anche notify() e quindi il display stampa
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-        }
+        Time t = myCountdown.getTime();
 
-    } catch (const TimerException& e) {
-        std::cerr << "\nERRORE: " << e.what() << std::endl;
-    } catch (...) {
-        std::cerr << "\nErrore imprevisto!" << std::endl;
+        // Grafica ANSI
+        cout << "\n\n";
+        cout << "\t+------------------+\n";
+        // \033[1;31m = Rosso grassetto, \033[0m = Reset colore
+        cout << "\t|    \033[1;31m" << t.toString() << "\033[0m    |\n";
+        cout << "\t+------------------+\n";
+        cout << "\n\t   Counting down...\n";
+
+        // Aspetta 1 secondo
+        this_thread::sleep_for(chrono::seconds(1));
+
+        // Aggiorna logica
+        myCountdown.update();
     }
 
-    delete mioTimer;
+    // Schermata finale
+    clearScreen();
+    cout << "\n\n";
+  	cout << "\t********************\n";
+    cout << "\t* TEMPO SCADUTO! *\n";
+    cout << "\t********************\n";
+    cout << "\n\a"; // ...\a emette un suono (BEEP)
+
     return 0;
 }

@@ -5,14 +5,24 @@
 #ifndef COUNTDOWNTIMER_H
 #define COUNTDOWNTIMER_H
 
-#include "Timer.h"
+#include "MyTime.h"
 
-class CountdownTimer : public Timer {
+class CountdownTimer : {
+private:
+    Time currentTime;
+    bool finished;
+
 public:
-    CountdownTimer(int h, int m, int s);
+    Countdown(int h, int m, int s);
 
-    // Sovrascriviamo il metodo update per contare all'indietro
-    void update() override;
+    // Esegue un passo del timer
+    void update();
+
+    // Controlla se è finito
+    bool isFinished() const { return finished; }
+
+    // Restituisce l'oggetto Time per vederlo
+    Time getTime() const { return currentTime; }
 };
 
 #endif
