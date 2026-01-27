@@ -5,7 +5,7 @@
 #ifndef GUI_H
 #define GUI_H
 
-#include <ncurses.h>
+#include <curses.h>
 #include "CountDownTimer.h"
 
 class Gui {
