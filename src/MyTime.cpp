@@ -5,7 +5,7 @@
 #include <cstdio>
 MyTime::MyTime(int h, int m, int s) : hours(h), minutes(m), seconds(s) {}
 
-bool Time::isZero() const {
+bool MyTime::isZero() const {
     return hours == 0 && minutes == 0 && seconds == 0;
 }
 

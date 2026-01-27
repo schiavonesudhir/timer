@@ -14,6 +14,8 @@ add_executable(timer
         src/main.cpp
         src/MyTime.cpp
         src/CountDownTimer.cpp
+        src/Gui.cpp
+        include/Gui.h
         src/Gui.cpp   # File per la gestione grafica
 )
 

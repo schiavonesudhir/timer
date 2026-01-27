@@ -7,13 +7,13 @@
 
 #include "MyTime.h"
 
-class CountdownTimer : {
+class CountDownTimer {
 private:
-    Time currentTime;
+    MyTime currentTime;
     bool finished;
 
 public:
-    Countdown(int h, int m, int s);
+    CountDownTimer(int h, int m, int s);
 
     // Esegue un passo del timer
     void update();
@@ -22,7 +22,7 @@ public:
     bool isFinished() const { return finished; }
 
     // Restituisce l'oggetto Time per vederlo
-    Time getTime() const { return currentTime; }
+    MyTime getTime() const { return currentTime; }
 };
 
 #endif

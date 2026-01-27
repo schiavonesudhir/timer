@@ -1,55 +1,42 @@
+#include "CountDownTimer.h"
+#include "Gui.h"
+#include <thread> // Per sleep
+#include <chrono>
 #include <iostream>
-#include <thread> // Per sleep_for
-#include <chrono> // Per seconds
-#include <cstdlib> // Per system()
-#include "Countdown.h"
 using namespace std;
-// Funzione helper per pulire lo schermo su Linux/WSL
-void clearScreen() {
-    system("clear");
-}
-
 int main() {
+    // Chiediamo l'input PRIMA di avviare la GUI ncurses
     int h, m, s;
-
-    // Input iniziale
-    clearScreen();
-    cout << "=== COUNTDOWN TIMER (WSL) ===\n";
     cout << "Inserisci ore: "; cin >> h;
     cout << "Inserisci minuti: "; cin >> m;
     cout << "Inserisci secondi: "; cin >> s;
 
-    // Creazione oggetto
-    Countdown myCountdown(h, m, s);
+    // Avvio oggetti
+    CountDownTimer timer(h, m, s);
+    Gui gui; // Questo pulisce lo schermo ed entra in modalità grafica
 
-    // Loop principale
-    while (!myCountdown.isFinished()) {
-        clearScreen();
+    bool running = true;
+    while (running && !timer.isFinished()) {
+        // 1. Disegna
+        gui.draw(timer);
 
-        Time t = myCountdown.getTime();
+        // 2. Controlla Input
+        if (gui.handleInput()) {
+            running = false;
+        }
 
-        // Grafica ANSI
-        cout << "\n\n";
-        cout << "\t+------------------+\n";
-        // \033[1;31m = Rosso grassetto, \033[0m = Reset colore
-        cout << "\t|    \033[1;31m" << t.toString() << "\033[0m    |\n";
-        cout << "\t+------------------+\n";
-        cout << "\n\t   Counting down...\n";
+        // 3. Aggiorna Timer
+        timer.update();
 
-        // Aspetta 1 secondo
-        this_thread::sleep_for(chrono::seconds(1));
-
-        // Aggiorna logica
-        myCountdown.update();
+        // 4. Aspetta un po' (1 secondo è troppo lento per la reattività dei tasti,
+        // meglio dormire meno e aggiornare il timer logicamente ogni tot cicli,
+        // ma per semplicità qui dormiamo 1 secondo)
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
-    // Schermata finale
-    clearScreen();
-    cout << "\n\n";
-  	cout << "\t********************\n";
-    cout << "\t* TEMPO SCADUTO! *\n";
-    cout << "\t********************\n";
-    cout << "\n\a"; // ...\a emette un suono (BEEP)
+    if (timer.isFinished()) {
+        gui.showEndScreen();
+    }
 
     return 0;
 }

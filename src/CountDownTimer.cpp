@@ -3,13 +3,13 @@
 //
 #include "CountDownTimer.h"
 
-CountdownTimer::CountdownTimer(int h, int m, int s): currentTime(h, m, s), finished(false) {
+CountDownTimer::CountDownTimer(int h, int m, int s): currentTime(h, m, s), finished(false) {
     if (currentTime.isZero()) {
         finished = true;
     }
 }
 
-void Countdown::update() {
+void CountDownTimer::update() {
     if (!finished) {
         // Prova a scalare un secondo
         bool stillRunning = currentTime.tickDown();
