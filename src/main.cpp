@@ -31,7 +31,7 @@ int main() {
         // 4. Aspetta un po' (1 secondo è troppo lento per la reattività dei tasti,
         // meglio dormire meno e aggiornare il timer logicamente ogni tot cicli,
         // ma per semplicità qui dormiamo 1 secondo)
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        this_thread::sleep_for(chrono::seconds(1));
     }
 
     if (timer.isFinished()) {

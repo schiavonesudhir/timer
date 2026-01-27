@@ -5,6 +5,7 @@
 #ifndef MYTIME_H
 #define MYTIME_H
 #include <string>
+using namespace std;
 class MyTime { // Cambiato nome da Time a MyTime
 private:
     int hours;
@@ -26,7 +27,7 @@ public:
     bool tickDown();
 
     // Per stampare facilmente (es. "01:05:09")
-    std::string toString() const;
+    string toString() const;
 };
 
 #endif
