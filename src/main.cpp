@@ -28,7 +28,7 @@ int main() {
         //Aggiorna Timer
         timer.update();
 
-        // Aspetta un po' (1 secondo è troppo lento per la reattività dei tasti,meglio aspettare e aggiornare il timer logicamente ogni tot cicli,ma per semplicità qui aspettiamo 1 secondo)
+        // Aspetta un po' (1 secondo è troppo lento per la reattività dei tasti,meglio aspettare e aggiornare il timer logicamente ogni tot cicli,ma per semplicità qui aspettiamo1 1 secondo)
         this_thread::sleep_for(chrono::seconds(1));
     }
 
