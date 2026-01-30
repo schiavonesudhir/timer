@@ -1,3 +1,0 @@
-C:/Users/sudhs/CLionProjects/timer/build/CMakeFiles/timer.dir
-C:/Users/sudhs/CLionProjects/timer/build/CMakeFiles/edit_cache.dir
-C:/Users/sudhs/CLionProjects/timer/build/CMakeFiles/rebuild_cache.dir

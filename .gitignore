@@ -1,5 +1,22 @@
+# CLion & CMake (Cartelle di build)
+cmake-build-*/
+build/
+bin/
+lib/
+
+# File IDE (Non servono ad altri)
 .idea/
-cmake-build-debug/
-cmake-build-release/
+.vscode/
+*.user
+
+# Eseguibili e Oggetti
 *.exe
+*.dll
+*.so
+*.dylib
+*.a
 *.o
+
+# File temporanei di sistema
+.DS_Store
+Thumbs.db
