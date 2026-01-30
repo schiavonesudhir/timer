@@ -10,12 +10,13 @@ CountDownTimer::CountDownTimer(int h, int m, int s): currentTime(h, m, s), finis
 }
 
 void CountDownTimer::update() {
-    if (!finished) {
-        // Prova a scalare un secondo
-        bool stillRunning = currentTime.tickDown();
+    if (finished) return;
 
-        if (!stillRunning) {
-            finished = true;
-        }
+    // Prova a scendere di un secondo
+    currentTime.tickDown();
+
+    // Controllo immediato: Se DOPO il tick siamo a zero, è finita.
+    if (currentTime.isZero()) {
+        finished = true;
     }
 }

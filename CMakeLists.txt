@@ -20,22 +20,15 @@ else()
     set(CURSES_NEED_NCURSES TRUE)
     find_package(Curses REQUIRED)
 endif()
-
-# 3. DEBUG: Stampiamo cosa ha trovato (guarda nella console CMake in basso)
-message(STATUS "Curses found: ${CURSES_FOUND}")
-message(STATUS "Curses include dir: ${CURSES_INCLUDE_DIR}")
-message(STATUS "Curses libs: ${CURSES_LIBRARIES}")
-
-# percorsi in modo aggressivo
 # Se CURSES_INCLUDE_DIR è vuoto, forza i path standard WSL
 if (CURSES_INCLUDE_DIR)
     include_directories(${CURSES_INCLUDE_DIR})
-    # Aggiungi anche il percorso ncurses per Windows
+    # Aggiunge anche il percorso ncurses per Windows
     if(WIN32 AND EXISTS "C:/msys64/mingw64/include/ncurses")
         include_directories("C:/msys64/mingw64/include/ncurses")
     endif()
 else()
-    # Path (WSL)
+    # Path (di WSL)
     include_directories(/usr/include)
     include_directories(/usr/include/ncurses)
 endif()
@@ -46,8 +39,7 @@ add_executable(timer
         src/MyTime.cpp
         src/CountDownTimer.cpp
         src/Gui.cpp
-        include/Gui.h # Utile per far vedere l'header nell'albero del progetto
-        # HAI RIMOSSO IL DUPLICATO DI src/Gui.cpp CHE C'ERA QUI
+        include/Gui.h
 )
 
 # Forza l'uso di ncurses per Windows
@@ -57,3 +49,25 @@ if(WIN32)
 else()
     target_link_libraries(timer ${CURSES_LIBRARIES})
 endif()
+# google test
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+)
+# evita conflitti con lib C a run time
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
+
+#eseguibili per i test
+add_executable(runTests
+        tests/MyTimeTests.cpp
+        tests/CountDownTests.cpp
+        src/MyTime.cpp
+        src/CountDownTimer.cpp
+)
+#link google test e googletestmain
+target_link_libraries(runTests gtest_main)
+target_include_directories(runTests PRIVATE include)
