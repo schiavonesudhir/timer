@@ -31,3 +31,18 @@ sudo apt-get install build-essential cmake
 # Installazione libreria grafica NCURSES (Fondamentale)
 sudo apt-get install libncurses-dev
 
+```
+```bash
+
+```
+### 2. Cambiamenti Clion
+* File->Settings->Build, Execution, Deployment->Toolchain->
+* * selezionare WSL;
+* * toolset: Ubuntu-22.04 
+* * Cmake: WSL CMAKE
+* * Build Tool: gmake
+* * C Compiler: cc
+* * C++ Compiler: c++
+* * Debugger: WSL gdb
+
+*
