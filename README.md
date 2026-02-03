@@ -42,3 +42,8 @@ sudo apt-get install libncurses5-dev libncursesw5-dev
 * * C Compiler: cc
 * * C++ Compiler: c++
 * * Debugger: WSL gdb
+
+altri cambiamenti per la visualizzazione :
+Run->Edit Configurations
+* spuntare "Emulate terminal in the output console" 
+* Enviroment Variables: TERM=xterm-256color
