@@ -17,8 +17,7 @@ Il progetto include un insieme di test unitari automatizzati con **GoogleTest**.
 Per far funzionare questo progetto su Windows usare **WSL (Windows Subsystem for Linux)** per garantire compatibilità nativa con le librerie
 
 ### 1. Prerequisiti Installati
-Installare Clion e apportare le modifiche necessarie per la corretta compilazione:
-Toolchain: WSL
+Installare Clion e apportare le modifiche necessarie per la corretta compilazione.
 All'interno del terminale WSL (Ubuntu), sono stati installati i seguenti pacchetti:
 
 ```bash
@@ -43,7 +42,7 @@ sudo apt-get install libncurses5-dev libncursesw5-dev
 * * C++ Compiler: c++
 * * Debugger: WSL gdb
 
-altri cambiamenti per la visualizzazione :
+altri cambiamenti per la visualizzazione su terminale:
 Run->Edit Configurations
 * spuntare "Emulate terminal in the output console" 
 * Enviroment Variables: TERM=xterm-256color
