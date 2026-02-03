@@ -39,7 +39,6 @@ add_executable(timer
         src/MyTime.cpp
         src/CountDownTimer.cpp
         src/Gui.cpp
-        include/Gui.h
 )
 
 # Forza l'uso di ncurses per Windows

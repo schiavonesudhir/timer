@@ -1,4 +1,4 @@
-# ⏱️ Countdown Timer Project (C++ & Ncurses)
+# ️⏲️ Countdown Timer Project (C++ & Ncurses)
 
 Applicazione su terminale per il conto alla rovescia, sviluppata in C++ 11 utilizzando la libreria **ncurses** per l'interfaccia grafica (GUI).
 Il progetto include un insieme di test unitari automatizzati con **GoogleTest**.
@@ -29,12 +29,10 @@ sudo apt-get update
 sudo apt-get install build-essential cmake
 
 # Installazione libreria grafica NCURSES (Fondamentale)
-sudo apt-get install libncurses-dev
+sudo apt-get install libncurses5-dev libncursesw5-dev
 
 ```
-```bash
 
-```
 ### 2. Cambiamenti Clion
 * File->Settings->Build, Execution, Deployment->Toolchain->
 * * selezionare WSL;
@@ -44,5 +42,3 @@ sudo apt-get install libncurses-dev
 * * C Compiler: cc
 * * C++ Compiler: c++
 * * Debugger: WSL gdb
-
-*

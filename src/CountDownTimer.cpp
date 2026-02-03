@@ -15,7 +15,7 @@ void CountDownTimer::update() {
     // Prova a scendere di un secondo
     currentTime.tickDown();
 
-    // Controllo immediato: Se DOPO il tick siamo a zero, è finita.
+    // Controllo immediato: Se DOPO il tick e a zero, è finita.
     if (currentTime.isZero()) {
         finished = true;
     }
