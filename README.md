@@ -46,3 +46,7 @@ altri cambiamenti per la visualizzazione su terminale:
 Run->Edit Configurations
 * spuntare "Emulate terminal in the output console" 
 * Enviroment Variables: TERM=xterm-256color
+
+invalidate variables:
+* Vai su Tools -> Resync with Remote Host.
+ Oppure: File -> Invalidate Caches...->Invalidate and Restart.
