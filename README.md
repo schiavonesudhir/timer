@@ -17,8 +17,7 @@ Il progetto include un insieme di test unitari automatizzati con **GoogleTest**.
 Per far funzionare questo progetto su Windows usare **WSL (Windows Subsystem for Linux)** per garantire compatibilità nativa con le librerie
 
 ### 1. Prerequisiti Installati
-Installare Clion e apportare le modifiche necessarie per la corretta compilazione:
-Toolchain: WSL
+Installare Clion e apportare le modifiche necessarie per la corretta compilazione.
 All'interno del terminale WSL (Ubuntu), sono stati installati i seguenti pacchetti:
 
 ```bash
