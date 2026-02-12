@@ -156,15 +156,15 @@ classDiagram
         +Gui()
         +~Gui()
         +draw(MyTime t)
-        +displayMessage(string msg)
-        +clear() void
+        +handleInput() bool
+        +showEndScreen() void
     }
 
     %% Relazioni
-    CountDownTimer *-- MyTime : "Composizione (Possiede)"
-    Gui ..> MyTime : "Dipendenza (Usa per disegnare)"
+    CountDownTimer *-- MyTime : ""
+    Gui ..> CountDownTimer : "Dipendenza (Usa per disegnare)"
     
-    note for CountDownTimer "Logica di Business\nGestisce lo stato"
-    note for MyTime "Logica Dati\nGestisce la matematica"
-    note for Gui "Interfaccia\nGestisce Ncurses"
+    note for CountDownTimer "Gestisce lo stato fel Timer"
+    note for MyTime "Gestisce la matematica del Timer"
+    note for Gui "Interfaccia"
 ```
