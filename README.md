@@ -116,7 +116,6 @@ Gestisce l'interfaccia grafica Ncurses.
 |      `+`       | `void`    | `draw()`          | Disegna il box e l'orario al centro            |
 |      `+`       | `void`    | `handleInput()`   | Gestisce input di uscita da utente             |
 |     `+`     | `void`    | `showEndScreen()` | Mostra messaggio di fine ( "Tempo Scaduto!")   |
-
 ---
 
 ### 📊 Diagramma Visuale (in Mermaid)
