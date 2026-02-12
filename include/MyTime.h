@@ -14,7 +14,6 @@ private:
 
 public:
     MyTime(int h = 0, int m = 0, int s = 0);
-
     // Getters
     int getHours() const { return hours; }
     int getMinutes() const { return minutes; }

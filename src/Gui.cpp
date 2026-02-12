@@ -67,10 +67,10 @@ void Gui::showEndScreen() {
     wattron(win, A_BLINK | A_BOLD | COLOR_PAIR(2));
     mvwprintw(win, height/2, 10, "TEMPO SCADUTO!");
     wattroff(win, A_BLINK | A_BOLD | COLOR_PAIR(2));
-    mvwprintw(win, height-2, 8, "Premi S per uscire");
+    mvwprintw(win, height-2, 8, "Premi q per uscire");
     wrefresh(win);
 
     // Aspetta input bloccante alla fine
     nodelay(stdscr, FALSE);
-    while(getch() != 's');
+    while(getch() != 'q');
 }

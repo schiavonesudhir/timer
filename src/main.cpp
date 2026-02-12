@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 int main() {
-    // Chiede l'input PRIMA di avviare la GUI di ncurses
+    // Chiede l'input prima di avviare la GUI di ncurses
     int h, m, s;
     cout << "Inserisci ore: "; cin >> h;
     cout << "Inserisci minuti: "; cin >> m;
