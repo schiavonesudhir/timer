@@ -162,7 +162,7 @@ classDiagram
 
     %% Relazioni
     CountDownTimer *-- MyTime : 
-    Gui ..> CountDownTimer : "Dipendenza (Usa per disegnare)"
+    Gui ..> CountDownTimer : "Usa CountDownTimer per disegnare"
     
     note for CountDownTimer "Gestisce lo stato fel Timer"
     note for MyTime "Gestisce la matematica del Timer"
