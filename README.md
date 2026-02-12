@@ -128,9 +128,9 @@ classDiagram
     direction TB
 
     class MyTime {
-        -int _hours
-        -int _minutes
-        -int _seconds
+        -int hours
+        -int minutes
+        -int seconds
         +MyTime(h, m, s)
         +tickDown() bool
         +toString() string
@@ -155,7 +155,7 @@ classDiagram
         -int width
         +Gui()
         +~Gui()
-        +draw(MyTime t)
+        +draw(CountDownTimer& timer)
         +handleInput() bool
         +showEndScreen() void
     }
