@@ -66,7 +66,7 @@ invalidate variables:
 2. https://dev.to/tbhaxor/series/7753
 2. https://twiki.di.uniroma1.it/pub/Users/MarcoValerioBarbera/TutorialsuCurses
 
-📂 Struttura del Codice
+## 📂 Struttura del Codice
 
 Il sistema è basato su tre classi principali separate in:  (`MyTime`),
  (`CountdownTimer`) e l'interfaccia utente (`Gui`).  
@@ -76,17 +76,17 @@ Non vengono scritti i ***GET()*** di MyTime
 Gestisce la matematica pura dell'orario (rollover dei secondi/minuti).  
 
 
-|  Visibilità   | Tipo | Membro            | Descrizione                                              |
-|:-------------:| :--- |:------------------|:---------------------------------------------------------|
-| **Attributi** | |                   |                                                          |
-|      `-`      | `int` | `hours`           | Ore                                                      |
-|      `-`      | `int` | `minutes`         | Minuti                                                   |
-|      `-`      | `int` | `seconds`         | Secondi                                                  |
-|  **Metodi**   | |                   |                                                          |
-|      `+`      | `MyTime` | `MyTime(h, m, s)` | Costruttore                                              |
-|      `+`      | `bool` | `tickDown()`      | Toglie 1 secondo. Ritorna `false` se è a 0.              |
-|      `+`      | `string` | `toString()`      | Formatta l'orario come "Hours:Minutes:Seconds" (Europeo) |
-|     `+`     | `bool` | `isZero()`        | Controlla se il tempo è 00:00:00                         |
+|  Visibilità   | Tipo | Membro            | Descrizione                                    |
+|:-------------:| :--- |:------------------|:-----------------------------------------------|
+| **Attributi** | |                   |                                                |
+|      `-`      | `int` | `hours`           | Ore                                            |
+|      `-`      | `int` | `minutes`         | Minuti                                         |
+|      `-`      | `int` | `seconds`         | Secondi                                        |
+|  **Metodi**   | |                   |                                                |
+|      `+`      | `MyTime` | `MyTime(h, m, s)` | Costruttore                                    |
+|      `+`      | `bool` | `tickDown()`      | Toglie 1 secondo. Ritorna `false` se è a 0.    |
+|      `+`      | `string` | `toString()`      | Formatta l'orario come "Hours:Minutes:Seconds" |
+|     `+`     | `bool` | `isZero()`        | Controlla se il tempo è 00:00:00               |
 
 ### 2. Class: CountDownTimer
 Gestisce lo stato del timer.
