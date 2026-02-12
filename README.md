@@ -120,7 +120,7 @@ Gestisce l'interfaccia grafica Ncurses.
 ---
 
 ### 📊 Diagramma Visuale (in Mermaid)
-  
+*grafico qui sotto:*
 
 ```mermaid
 classDiagram
@@ -128,9 +128,9 @@ classDiagram
     direction TB
 
     class MyTime {
-        -int hours
-        -int minutes
-        -int seconds
+        -int _hours
+        -int _minutes
+        -int _seconds
         +MyTime(h, m, s)
         +tickDown() bool
         +toString() string
@@ -155,16 +155,16 @@ classDiagram
         -int width
         +Gui()
         +~Gui()
-        +draw(CountDownTimer& timer)
-        +handleInput()
-        +showEndScreen();
+        +draw(MyTime t)
+        +displayMessage(string msg)
+        +clear() void
     }
 
     %% Relazioni
-    CountDownTimer *-- MyTime :(Oggetto MyTime usato da CountDownTimer): 
-    Gui ..> CountDownTimer : "Dipendenza (Usa per disegnare)"
+    CountDownTimer *-- MyTime : "Composizione (Possiede)"
+    Gui ..> MyTime : "Dipendenza (Usa per disegnare)"
     
-    note for CountDownTimer "Logica di Business\Gestisce lo stato del Timer"
-    note for MyTime "Logica Dati\Gestione la matematica del Timer"
-    note for Gui "Interfaccia"
+    note for CountDownTimer "Logica di Business\nGestisce lo stato"
+    note for MyTime "Logica Dati\nGestisce la matematica"
+    note for Gui "Interfaccia\nGestisce Ncurses"
 ```
