@@ -55,7 +55,7 @@ Build->Clean.
 altri cambiamenti per la visualizzazione su terminale:
 Run->Edit Configurations
 1. spuntare "Emulate terminal in the output console" 
-2. Enviroment Variables: TERM=xterm-256color (**NON** su tutti i dispositivi e necessario)
+2. Enviroment Variables: TERM=xterm-256color 
 
 invalidate variables:
 * Vai su Tools → Resync with Remote Host.
