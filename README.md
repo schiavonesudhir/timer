@@ -1,7 +1,7 @@
 # ️⏲️ Countdown Timer Project (C++ & Ncurses)
 
-Applicazione su terminale per il conto alla rovescia, sviluppata in C++ 11 utilizzando la libreria **ncurses** per l'interfaccia grafica (GUI).  
-Il progetto include un insieme di test unitari automatizzati con **GoogleTest**.
+Applicazione su terminale di un Timer, sviluppata in C++ 11 utilizzando la libreria **ncurses** per l'interfaccia grafica (GUI).  
+Il progetto include un insieme di 10 test con **GoogleTest**.
 
 ## 📋 Caratteristiche Principali
 * **Interfaccia Grafica:** GUI testuale con finestre, bordi e colori grazie a `ncurses`.
@@ -119,8 +119,6 @@ Gestisce l'interfaccia grafica Ncurses.
 ---
 
 ### 📊 Diagramma Visuale (in Mermaid)
-*grafico qui sotto:*
-
 ```mermaid
 classDiagram
     %% Stile del grafico
