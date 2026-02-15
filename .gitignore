@@ -9,14 +9,13 @@ lib/
 .vscode/
 *.user
 
-# Eseguibili e Oggetti
+# Eseguibili, Oggetti,lib dinamiche e statiche
 *.exe
 *.dll
 *.so
-*.dylib
 *.a
 *.o
 
-# File temporanei di sistema
+# File temporanei di sistema di MAC/Windows
 .DS_Store
 Thumbs.db
