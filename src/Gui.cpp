@@ -23,7 +23,7 @@ Gui::Gui() {
     height = 10; width = 40;
     int start_y = (LINES - height) / 2;
     int start_x = (COLS - width) / 2;
-    win = newwin(height, width, start_y, start_x);
+    win = newwin(height, width, start_y, start_x);// crea una finestra e la centra
 }
 
 Gui::~Gui() {
@@ -35,10 +35,10 @@ void Gui::draw(const CountDownTimer& timer) {
     werase(win); // Pulisce finestra
 
     // Disegna bordo
-    wattron(win, COLOR_PAIR(1));
+    wattron(win, COLOR_PAIR(1)); //attiva stile
     box(win, 0, 0);
     mvwprintw(win, 0, 2, "[ WSL TIMER ]");
-    wattroff(win, COLOR_PAIR(1));
+    wattroff(win, COLOR_PAIR(1)); //spenge stile
 
     // Scrivi Tempo (Grande e Rosso)
     string timeStr = timer.getTime().toString();
@@ -56,7 +56,7 @@ void Gui::draw(const CountDownTimer& timer) {
 }
 
 bool Gui::handleInput() {
-    int ch = getch();
+    int ch = getch(); //legge caratteri dalla tastiera
     if (ch == 'q' || ch == 'Q') return true;
     return false;
 }
